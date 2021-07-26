@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Alarm App</title>
+</head>
+
+<body>
+    <h1 style="text-align: center; margin-top: 40px;">Alarm App</h1>
+    <div class="container">
+
+        <div class="mb-3">
+            <label for="alarmTime" class="form-label">Set Your Alarm Time</label>
+            <input type="text" class="form-control" id="alarmTime"
+                placeholder="Enter the time in foramt yyyy-mm-dd hh:mm:ss">
+            <button id="btnTime" style="margin-top: 25px;" type="button" class="btn btn-secondary">Set alarm</button>
+        </div>
+        <button onclick="play()" id="playBtn">Play Audio</button>
+        <!-- Optional JavaScript; choose one of the two! -->
+        <script>
+            function play() {
+                var myAudio = new Audio(`alarm.wav`);
+                myAudio.play();
+
+            }
+
+
+            let btnTime = document.getElementById(`btnTime`).addEventListener(`click`, () => {
+                let alarmTime = document.getElementById(`alarmTime`)
+                console.log(alarmTime.value)
+
+                let timeSet = new Date(alarmTime.value)
+                let timeNow = new Date();
+                console.log(timeNow);
+                let alarmSet = timeSet - timeNow;
+                console.log(alarmSet);
+                function alarmtime() {
+
+                    setTimeout(() => {
+                        console.log(`ringing`);
+                        play();
+                    }, alarmSet);
+
+
+                }
+                alarmtime();
+
+
+            })
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+
+        <embed src="alarm3.wav" autostart="false" width="0" height="0" id="sound1" enablejavascript="true">
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+</body>
+
+</html>
